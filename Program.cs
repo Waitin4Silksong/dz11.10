@@ -5,20 +5,20 @@ Console.OutputEncoding = Encoding.UTF8;
 Console.InputEncoding = Encoding.UTF8;
 
 Console.Write("Введіть назву папки: ");
-string folderName = Console.ReadLine();
-string folderPath = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+string name = Console.ReadLine();
+string path = @"D:\Visual Studio\ConsoleApp19\ConsoleApp19";
 
-if (!Directory.Exists(folderPath))
+if (!Directory.Exists(path))
 {
-    Directory.CreateDirectory(folderPath);
-    Console.WriteLine($"Папку '{folderName}' створено.");
+    Directory.CreateDirectory(path);
+    Console.WriteLine($"Папку '{name}' створено.");
 }
 else
 {
-    Console.WriteLine($"Папка '{folderName}' вже існує.");
+    Console.WriteLine($"Папка '{name}' вже існує.");
 }
 
-string filePath = Path.Combine(folderPath, "text.txt");
+string filePath = Path.Combine(path, "text.txt");
 string[] lines = new string[5];
 
 for (int i = 0; i < 5; i++)
@@ -37,5 +37,5 @@ for (int i = 0; i < fileContent.Length; i++)
 }
 
 File.Delete(filePath);
-Directory.Delete(folderPath);
+Directory.Delete(path);
 Console.WriteLine("Файл та папку видалено.");
